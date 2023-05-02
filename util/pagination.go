@@ -7,7 +7,7 @@ import (
 	"github.com/unknwon/com"
 )
 
-func GetPages(ctx *gin.Context) (result int) {
+func GetOffset(ctx *gin.Context) (result int) {
 	page := com.StrTo(ctx.Query("page")).MustInt() // TODO: 此处进行错误log处理
 	if page > 0 {
 		result = (page - 1) * setting.PageSize
