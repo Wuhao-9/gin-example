@@ -68,4 +68,9 @@ func init() {
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	err = DB.AutoMigrate(&Auth{})
+	if err != nil {
+		fmt.Println(err)
+	}
 }

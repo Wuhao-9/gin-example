@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github/Wuhao-9/go-gin-example/middleware"
 	"github/Wuhao-9/go-gin-example/pkg/setting"
 	v1 "github/Wuhao-9/go-gin-example/router/api/v1"
 
@@ -13,7 +14,10 @@ func InitRouter() *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger(), gin.Recovery())
 
+	router.GET("/auth", v1.GetAuth)
+
 	apiv1 := router.Group("/api/v1")
+	apiv1.Use(middleware.JWT())
 	{
 		// 获取标签列表
 		apiv1.GET("/tags", v1.GetTags)
